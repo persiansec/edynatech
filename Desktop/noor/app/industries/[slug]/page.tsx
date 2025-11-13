@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+
 import { getIndustry, industries } from "@/lib/industries-data";
 import IndustryDetailPageClient from "@/components/pages/IndustryDetailPageClient";
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function IndustryDetailPage({ params }: Props) {
   const resolvedParams = await params; // ✅ Unwrap again
   const industry = await getIndustry(resolvedParams.slug);
-  if (!industry) return notFound();
+  if (!industry) return ("not_found ");
 
   return (
     <IndustryDetailPageClient
